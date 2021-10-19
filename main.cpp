@@ -222,15 +222,15 @@ bool getPngSize(std::istream& ifs, int& image_width, int& image_height)
         {
             std::reverse(buf.begin() + 16, buf.begin() + 24);            
             memcpy(b64.c, buf.data() + 16, 8);
-            image_width = b64.i[0];
-            image_height = b64.i[1];
+            image_width = b64.i[1];
+            image_height = b64.i[0];
         }
         else
         {
             std::reverse(buf.begin() + 8, buf.begin() + 16);
             memcpy(b64.c, buf.data() + 8, 8);
-            image_width = b64.i[0];
-            image_height = b64.i[1];
+            image_width = b64.i[1];
+            image_height = b64.i[0];
         }
     }
     return true;
